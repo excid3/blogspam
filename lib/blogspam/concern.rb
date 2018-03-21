@@ -3,7 +3,7 @@ module Blogspam
     extend ActiveSupport::Concern
 
     included do
-      scope :clean, ->{ where(is_spam: false) }
+      scope :clean, ->{ where(is_spam: [nil, false]) }
       scope :spam,  ->{ where(is_spam: true) }
 
       after_create :check_spam!
